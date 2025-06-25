@@ -1,6 +1,6 @@
 # Unlogy – Online Learning Platform 
 
-This is the online learning platform developed during my internship at Aqlama Company. The platform allows students to explore and access recent projects, while instructors and admins can manage projects, users, and content through a dedicated dashboard.
+This is online learning platform developed during my internship at Aqlama Company. The platform allows students to explore and access recent projects, while instructors and admins can manage projects, users, and content through a dedicated dashboard.
 
 ## 📌 Features
 
@@ -25,6 +25,5 @@ This is the online learning platform developed during my internship at Aqlama Co
 ## 💻 Tech Stack
 - HTML
 - CSS
-- JavaScript *(or React if applicable)*
-
-## 📁 Folder Structure
+- TypeScript
+- React
