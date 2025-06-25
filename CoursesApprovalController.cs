@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Unlogy.Data; 
 using Unlogy.Entities; 
 using System.Threading.Tasks;

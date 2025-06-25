@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import '../globals.css'; 
 import "@fortawesome/fontawesome-svg-core/styles.css"; // ✅ Ensure FA styles are loaded early
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // ✅ Prevent Font Awesome from adding CSS late (avoids flash)
@@ -25,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -33,7 +34,6 @@ export default function RootLayout({
           rel="preload"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
           as="style"
-          onLoad="this.onload=null;this.rel='stylesheet';"
         />
         <noscript>
           <link

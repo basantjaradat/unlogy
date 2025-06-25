@@ -1,17 +1,13 @@
 'use client';
 import React, { useState, FormEvent } from 'react';
-import Select from 'react-select';
-import './signup.css';
+import styles from './signup.module.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser, faEnvelope, faLock, faEye, faEyeSlash, faSearch,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faLock, faEye, faEyeSlash} 
+from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGoogle, faApple } from '@fortawesome/free-brands-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-type Specialization = 'Web Development' | 'Data Science' | 'Machine Learning' | 'Design' | 'Marketing';
 
 interface SignupResponse {
   message: string;
@@ -26,7 +22,7 @@ const Signup: React.FC = () => {
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedSpecializations, setSelectedSpecializations] = useState<Specialization[]>([]);
+  
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -60,7 +56,6 @@ const Signup: React.FC = () => {
       setUserName('');
       setEmail('');
       setPassword('');
-      setSelectedSpecializations([]);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         if (error.response?.data?.errors) {
@@ -88,35 +83,31 @@ const Signup: React.FC = () => {
 
   return (
     <div>
-      <header className="navbar">
-        <img src="/images/logo.png" alt="Logo" className="logo" />
-        <ul className="nav-links">
+      <header className={styles["navbar"]}>
+        <img src="/images/logo.png" alt="Logo" className={styles["logo"]} />
+        <ul className={styles["nav-links"]}>
           <li><a href="/public">Home</a></li>
-          <li><a href="#">Projects</a></li>
+          <li><a href="/all-projects">Projects</a></li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Contact Us</a></li>
         </ul>
-        <div className="search-box">
-          <FontAwesomeIcon icon={faSearch} />
-          <input type="text" placeholder="What do you want to learn?" />
-        </div>
       </header>
 
-      <main className="signup-container">
+      <main className={styles["signup-container"]}>
         <h1>Sign Up</h1>
 
-        {successMessage && <div className="success-message">{successMessage}</div>}
+        {successMessage && <div className={styles["success-message"]}>{successMessage}</div>}
 
         {errors.length > 0 && (
-          <div className="error-messages">
+          <div className={styles["error-messages"]}>
             {errors.map((error, index) => (
-              <p key={index} className="error-message">{error}</p>
+              <p key={index} className={styles["error-message"]}>{error}</p>
             ))}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className={styles["input-group"]}>
             <FontAwesomeIcon icon={faUser} />
             <input
               type="text"
@@ -126,10 +117,10 @@ const Signup: React.FC = () => {
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
-            {formErrors.userName && <p className="field-error">{formErrors.userName}</p>}
+            {formErrors.userName && <p className={styles["field-error"]}>{formErrors.userName}</p>}
           </div>
 
-          <div className="input-group">
+          <div className={styles["input-group"]}>
             <FontAwesomeIcon icon={faEnvelope} />
             <input
               type="email"
@@ -139,10 +130,10 @@ const Signup: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {formErrors.email && <p className="field-error">{formErrors.email}</p>}
+            {formErrors.email && <p className={styles["field-error"]}>{formErrors.email}</p>}
           </div>
 
-          <div className="input-group">
+          <div className={styles["input-group"]}>
             <FontAwesomeIcon icon={faLock} />
             <input
               type={passwordVisible ? 'text' : 'password'}
@@ -154,10 +145,10 @@ const Signup: React.FC = () => {
             />
             <FontAwesomeIcon
               icon={passwordVisible ? faEyeSlash : faEye}
-              className="toggle-password"
+              className={styles["toggle-password"]}
               onClick={togglePasswordVisibility}
             />
-            {formErrors.password && <p className="field-error">{formErrors.password}</p>}
+            {formErrors.password && <p className={styles["field-error"]}>{formErrors.password}</p>}
           </div>
 
           <button type="submit" disabled={isSubmitting}>
@@ -165,8 +156,8 @@ const Signup: React.FC = () => {
           </button>
         </form>
 
-        <div className="divider">Other sign up options</div>
-        <div className="social-icons">
+        <div className={styles["divider"]}>Other sign up options</div>
+        <div className={styles["social-icons"]}>
           <FontAwesomeIcon icon={faFacebook} />
           <FontAwesomeIcon icon={faGoogle} />
           <FontAwesomeIcon icon={faApple} />
