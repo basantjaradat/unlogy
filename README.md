@@ -23,7 +23,6 @@ This is online learning platform developed during my internship at Aqlama Compan
 - View project details by different instructors
 
 ## 💻 Tech Stack
-- HTML
-- CSS
 - TypeScript
+- CSS
 - React
